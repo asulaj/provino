@@ -27,9 +27,9 @@ async function getTags(){
         const img = document.createElement('img');
         const container = document.querySelector('#container')
         img.src=`https://cataas.com${url.url}`
-        document.querySelectorAll('img').forEach(a=>{
+        /* document.querySelectorAll('img').forEach(a=>{
             a.remove();
-        }) 
+        })*/ 
         container.appendChild(img)
         })
 }
