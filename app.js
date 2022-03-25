@@ -1,7 +1,5 @@
-/*
-    https://cataas.com/#/
- * Scrivere uno script che recupera i tags dall'api, di questi ne prende dal quinto al decimo e 
-    dal quindicesimo al ventesimo
+/*  https://cataas.com/#/
+ *  Scrivere uno script che recupera i tags dall'api, di questi ne prende dal quinto al decimo e dal quindicesimo al ventesimo
  *  creare un menù dropdown con i 10 tag recuperati e alla selezione di un elemento del menù 
  *  effettua una chiamata all'api recuperando un elemento con il tag selezionato
  *  di questo elemento, bisogna mostrare nella pagina html la foto del gatto e i tags di quell'elemento
@@ -22,7 +20,6 @@ async function getTags(){
         select.appendChild(option);
     })
     select.addEventListener('change',async ()=>{
-        container.removeChild(img);
         const catUrl = await fetch(`https://cataas.com/cat/${select.value}?json=true`);
         const url = await catUrl.json();
         console.log(url);
@@ -30,9 +27,11 @@ async function getTags(){
         const img = document.createElement('img');
         const container = document.querySelector('#container')
         img.src=`https://cataas.com${url.url}`
+        document.querySelectorAll('img').forEach(a=>{
+            a.remove();
+        }) 
         container.appendChild(img)
-
-    })
+        })
 }
 getTags();
 
